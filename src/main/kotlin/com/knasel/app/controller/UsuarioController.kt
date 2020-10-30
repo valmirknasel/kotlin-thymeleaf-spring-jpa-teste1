@@ -4,10 +4,11 @@ import com.knasel.app.model.Usuario
 import com.knasel.app.repository.UsuarioRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import java.util.*
+import javax.servlet.http.HttpServletResponse
 
 @RestController
 @RequestMapping("/usuarios")
@@ -29,10 +30,14 @@ class UsuarioController(val repository: UsuarioRepository) {
     }
 
     @RequestMapping("/{idUsuario}")
-    fun findUsuario(@PathVariable idUsuario: Long): Optional<Usuario> {
-        val usr = repository.findById(idUsuario)
-        logger.info(usr.toString())
-        return usr
+    fun findUsuario(@PathVariable idUsuario: Long, model: Model, response:HttpServletResponse): String {
+        val usr = repository.findById(idUsuario).get()
+        logger.info("$usr")
+        model.addAttribute("usr",usr)
+        /* response.sendRedirect("/usuario.html")*/
+        return "usuario"
     }
+
+
 
 }
