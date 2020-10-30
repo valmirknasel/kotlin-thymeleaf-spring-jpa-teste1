@@ -19,18 +19,30 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    /*Thymeleaf*/
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    /*Spring Boot Dev Tools*/
     developmentOnly("org.springframework.boot:spring-boot-devtools")
+    /*Postgres*/
     runtimeOnly("org.postgresql:postgresql")
+    /*Bootstrap CSS*/
+    implementation("org.webjars:bootstrap:4.5.2")
+    implementation("org.webjars:popper.js:2.5.2")
+    implementation("org.webjars:jquery:3.5.1")
+    /*Tests*/
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
 
+
+
+
 }
+
 
 tasks.withType<Test> {
     useJUnitPlatform()
