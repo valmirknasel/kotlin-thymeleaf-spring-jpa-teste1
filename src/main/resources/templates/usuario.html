@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
+</head>
+
+<body>
+<!--/*@thymesVar id="usr" type="com.knasel.app.model.Usuario"*/-->
+<div class="container-fluid" th:object="${usr}">
+    <p class="alert-primary">Nome do Usuario:</p>
+
+    <p th:text="${usr.nome}">User Name Here</p>
+</div>
+
+
+</body>
+
+
+<!-- A importação deve seguir essa sequência 1. Popper, 2. Jquery e 3. Bootstrap. Conforme recomenda  site do Bootstrap-->
+<script th:src="@{/webjars/popper.js/2.5.2/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+</html>
