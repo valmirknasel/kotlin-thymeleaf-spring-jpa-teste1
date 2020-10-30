@@ -8,7 +8,8 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.servlet.http.HttpServletResponse
+import org.springframework.web.servlet.ModelAndView
+import org.springframework.web.servlet.View
 
 @RestController
 @RequestMapping("/usuarios")
@@ -30,12 +31,10 @@ class UsuarioController(val repository: UsuarioRepository) {
     }
 
     @RequestMapping("/{idUsuario}")
-    fun findUsuario(@PathVariable idUsuario: Long, model: Model, response:HttpServletResponse): String {
+    fun findUsuario(@PathVariable idUsuario: Long, model:Model): ModelAndView {
         val usr = repository.findById(idUsuario).get()
-        logger.info("$usr")
-        model.addAttribute("usr",usr)
-        /* response.sendRedirect("/usuario.html")*/
-        return "usuario"
+        logger.info("findUsuario: $usr")
+        return ModelAndView("usuario").addObject("usr",usr)
     }
 
 
