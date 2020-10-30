@@ -1,9 +1,6 @@
 package com.knasel.app.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name="usuarios")
@@ -13,5 +10,9 @@ data class Usuario(
         var nome: String,
         var login: String,
         var email: String,
-        var senha: String
-)
+        var senha: String,
+        @Column(name = "is_ativo")
+        var isAtivo: Boolean
+) {
+        constructor():this(0,"","","","",false)
+}
