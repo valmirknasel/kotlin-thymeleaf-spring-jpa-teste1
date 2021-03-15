@@ -23,10 +23,15 @@ class UsuarioController(val repository: UsuarioRepository) {
     }
 
     @RequestMapping("/listar")
-    fun findAll(): ModelAndView {
+    fun findAll(): ModelAndView {// pra retornar usrList tem q alterar o tipo de retorno do método pra MutableList<Usuario>
         val usrList = repository.findAll()
         logger.info(usrList.toString())
+        /* Se usar o return usrList ao invés de retornar um ModelAndView e alterar o tipo de retorno de ModelAndView
+        pra MutableList<Usuario> o resultado é um JSON. Ficaria assim:
+        return usrList
+        */
         return ModelAndView("usuario").addObject("usrList",usrList)
+
     }
 
     /*Tá funcionando e exibindo na view!!! 15/03/2021*/
