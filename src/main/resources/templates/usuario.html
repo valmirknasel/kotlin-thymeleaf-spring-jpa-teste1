@@ -9,12 +9,12 @@
 <body>
 <!--/*@thymesVar id="usr" type="com.knasel.app.model.Usuario"*/-->
 <div class="container-fluid" th:object="${usr}">
-    <p class="alert-primary">Dados do Usuario:</p>
-    <p>Id:</p><p th:text="${usr.idUsuario}">User Name Here</p><br>
-    <p>Nome:</p><p th:text="${usr.nome}">User Name Here</p><br>
-    <p>Login:</p><p th:text="${usr.login}">User Login Here</p><br>
-    <p>E-mail:</p><p th:text="${usr.email}">User E-mail Here</p><br>
-    <p>Status:</p><p th:text="${usr.ativo}">User Status Here</p><br>
+    <p class="alert-primary">View com os Dados do Usuario Oriundos da Base de Dados:</p>
+    <p><strong>Id:</strong></p><p th:text="${usr.getIdUsuario()}">User Id Here</p>
+    <p><strong>Nome:</strong></p><p th:text="${usr.getNome()}">User Name Here</p>
+    <p><strong>Login:</strong></p><p th:text="${usr.getLogin()}">User Login Here</p>
+    <p><strong>E-mail:</strong></p><p th:text="${usr.getEmail()}">User E-mail Here</p>
+    <p><strong>Status do cadastro:</strong></p><p th:text="${usr.isAtivo()}">User Status Here</p>
 </div>
 
 
