@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
 class KotlinThymeleafSpringJpaTeste1ApplicationTests {
-    @Autowired
+   /* @Autowired
     lateinit var usrRepository: UsuarioRepository
     val logger: Logger = LoggerFactory.getLogger(javaClass)
 
@@ -41,6 +41,6 @@ class KotlinThymeleafSpringJpaTeste1ApplicationTests {
         val usr = usrRepository.findUsuarioByEmail("joao.silva@trash.com")
         logger.info("$usr")
         assertEquals("joao.silva@trash.com",usr.get(0).email)
-    }
+    }*/
 
 }

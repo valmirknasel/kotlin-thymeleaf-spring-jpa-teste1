@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository
 interface UsuarioRepository: JpaRepository<Usuario,Long> {
     fun findUsuarioByEmail(email: String): MutableList<Usuario>
     fun findUsuarioByLogin(login: String): Usuario
-    @Query("from Usuario where nome like %:nome%")
-    fun findUsuarioByNome(nome: String): MutableList<Usuario>
+    @Query("from Usuario where nome like nome")
+    fun findUsuarioByNome(nome: String): Usuario
 }

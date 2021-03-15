@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.ModelAndView
-import org.springframework.web.servlet.View
 
 @RestController
 @RequestMapping("/usuarios")
@@ -17,19 +16,20 @@ class UsuarioController(val repository: UsuarioRepository) {
     var logger:Logger = LoggerFactory.getLogger(javaClass)
 
     @RequestMapping("/nome/{nome}")
-    fun findUsuarioByNome(@PathVariable nome: String): MutableList<Usuario> {
+    fun findUsuarioByNome(@PathVariable nome: String): ModelAndView {
         val usr = repository.findUsuarioByNome(nome)
-        logger.info(usr.toString())
-        return usr
+        logger.info("findUsuarioByNome: $usr")
+        return ModelAndView("usuario").addObject("usr",usr)
     }
 
     @RequestMapping("/listar")
-    fun findAll(): MutableList<Usuario> {
+    fun findAll(): ModelAndView {
         val usrList = repository.findAll()
         logger.info(usrList.toString())
-        return usrList
+        return ModelAndView("usuario").addObject("usrList",usrList)
     }
 
+    /*Tá funcionando e exibindo na view!!! 15/03/2021*/
     @RequestMapping("/{idUsuario}")
     fun findUsuario(@PathVariable idUsuario: Long, model:Model): ModelAndView {
         val usr = repository.findById(idUsuario).get()
