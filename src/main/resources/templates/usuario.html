@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <title>Home Page</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
+
 </head>
 
 <body>
 <!--/*@thymesVar id="usr" type="com.knasel.app.model.Usuario"*/-->
 <div class="container-fluid" th:object="${usr}">
-    <p class="alert-primary">View com os Dados do Usuario Oriundos da Base de Dados:</p>
-    <p><strong>Id:</strong></p><p th:text="${usr.getIdUsuario()}">User Id Here</p>
-    <p><strong>Nome:</strong></p><p th:text="${usr.getNome()}">User Name Here</p>
-    <p><strong>Login:</strong></p><p th:text="${usr.getLogin()}">User Login Here</p>
-    <p><strong>E-mail:</strong></p><p th:text="${usr.getEmail()}">User E-mail Here</p>
-    <p><strong>Status do cadastro:</strong></p><p th:text="${usr.isAtivo()}">User Status Here</p>
+    <p class="alert alert-dark">View com os Dados do Usuario Oriundos da Base de Dados:</p>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <td><strong>Id:</strong>
+            <td><strong>Nome:</strong></td>
+            <td><strong>Login:</strong></td>
+            <td><strong>E-mail:</strong></td>
+            <td><strong>Cadastro Ativo?</strong></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="align-middle" th:text="${usr.getIdUsuario()}">User Id Here></td>
+            <td class="align-middle" th:text="${usr.getNome()}">User Name Here</td>
+            <td class="align-middle" th:text="${usr.getLogin()}">User Login Here</td>
+            <td class="align-middle" th:text="${usr.getEmail()}">User E-mail Here</td>
+            <td class="align-middle" th:text="${usr.isAtivo()}">User Status Here</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 
