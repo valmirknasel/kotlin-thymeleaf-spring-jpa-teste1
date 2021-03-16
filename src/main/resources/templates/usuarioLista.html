@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
+
+</head>
+
+<body>
+<!--/*@thymesVar id="listaDeUsuarios" type="List<Usuario>"*/-->
+<div class="container-fluid" th:object="${listaDeUsuarios}">
+    <p class="alert alert-dark">View com os Dados do Usuario Oriundos da Base de Dados:</p>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <td><strong>Id:</strong>
+            <td><strong>Nome:</strong></td>
+            <td><strong>Login:</strong></td>
+            <td><strong>E-mail:</strong></td>
+            <td><strong>Cadastro Ativo?</strong></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${listaDeUsuarios == null}">
+            <td colspan="5">Sem resultados</td>
+        </tr>
+        <!--/*@thymesVar id="usr" type="com.knasel.app.model.Usuario"*/-->
+        <tr th:each="usr: ${listaDeUsuarios}">
+            <td class="align-middle" th:text="${usr.getIdUsuario()}">User Id Here</td>
+            <td class="align-middle" th:text="${usr.getNome()}">User Name Here</td>
+            <td class="align-middle" th:text="${usr.getLogin()}">User Login Here</td>
+            <td class="align-middle" th:text="${usr.getEmail()}">User E-mail Here</td>
+            <td class="align-middle" th:text="${usr.isAtivo()}">User Status Here</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+
+
+<!-- A importação deve seguir essa sequência 1. Popper, 2. Jquery e 3. Bootstrap. Conforme recomenda  site do Bootstrap-->
+<script th:src="@{/webjars/popper.js/2.5.2/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+</html>
